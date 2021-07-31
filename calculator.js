@@ -37,9 +37,11 @@ app.get('/bmicalculator', ((req, res) => {
 }))
 
 app.post('/bmicalculator', ((req, res) => {
+    console.log(req.body.weight + '---' + req.body.height);
     const values = [Number(req.body.weight), Number(req.body.height)];
-    const bmiResult = Math.round(values[0] / Math.pow(values[1], 2));
-
+    console.log(values);
+    const bmiResult = ((values[0] / (Math.pow(values[1], 2))) * 10000).toFixed(1);
+    console.log(bmiResult);
     res.send(`Your BMI is: ${bmiResult}`);
 }))
 
